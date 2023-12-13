@@ -42,7 +42,7 @@ export default function Preprocessing({ csv, tempCSV, setTempCSV, changeColumnNa
     for (let i = 0; i < columns.length; i++) {
       tempCSV.filter((row, index) => {
         console.log(index)
-        if (row[columns[i]] == searchValue) {
+        if (row[columns[i]] === searchValue) {
           setSearchResult(prev => ([...prev, row]));
           setIndResult(prev => ([...prev, index]))
         }
@@ -182,7 +182,7 @@ export default function Preprocessing({ csv, tempCSV, setTempCSV, changeColumnNa
         </div>
       </div>
 
-      {searchResult.length != 0 &&
+      {searchResult.length !== 0 &&
         <div className='w-[99%] max-h-[99vh] pl-2 flex justify-center pb-6'>
           <div className='w-fit max-w-full '>
             <table className='max-h-[90vh] text-left overflow-scroll block border-b font-[0.9em] font-sans shadow-md rounded-md'>
@@ -200,7 +200,7 @@ export default function Preprocessing({ csv, tempCSV, setTempCSV, changeColumnNa
               </thead>
               <tbody>
                 {searchResult.map((row, index) => (
-                  index % 2 == 0 ?
+                  index % 2 === 0 ?
                     <tr key={index} className=''>
                       <td className='bg-white px-3  border-r border-dashed border-slate-300 '>
                         {indResult[index]}
@@ -272,7 +272,7 @@ export default function Preprocessing({ csv, tempCSV, setTempCSV, changeColumnNa
                   // const bottom = Math.round(e.target.scrollHeight - e.target.scrollTop) === e.target.clientHeight;
 
                   if (nerlyEqual < 150) {
-                    if (TempForShow.length != tempCSV.length) {
+                    if (TempForShow.length !== tempCSV.length) {
 
                       setEndOfShowenCSV(EndofShowenCSV + 100)
                       let x = EndofShowenCSV
@@ -304,7 +304,7 @@ export default function Preprocessing({ csv, tempCSV, setTempCSV, changeColumnNa
 
                 <tbody className='w-full'>
                   {TempForShow.map((row, index) => (
-                    index % 2 == 0 ?
+                    index % 2 === 0 ?
                       <tr key={index} className=''>
                         <td className='bg-white px-3  border-r border-dashed border-slate-300 text-center'>{index}</td>
                         {Object.values(row).map((value, index) => (

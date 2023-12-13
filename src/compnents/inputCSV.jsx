@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import Papa from 'papaparse'
 import Fimg from '../img/add-file.gif'
 import { Footer } from "./footer";
