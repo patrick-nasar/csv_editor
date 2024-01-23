@@ -16,8 +16,6 @@ export default function EditDeataSet() {
 
     const [tempCSV, setTempCSV] = useState(csv)
     const [changeColumnName, setChangeColumnName] = useState([]);
-    const [deleteRows, setDeleteRows] = useState([]);
-    const [deleteColumns, setDeleteColumns] = useState([]);
 
     const [barType, setbarType] = useState();
     const [massege, setmassege] = useState();
@@ -29,30 +27,6 @@ export default function EditDeataSet() {
         'Edit Dataset',
         'Download Dataset',
     ];
-
-    const changeColumnNameFunction = (colname, newnameC) => {
-        console.log(colname, newnameC)
-        let newnames = { ...changeColumnName, [colname]: newnameC }
-        setChangeColumnName(newnames)
-    }
-
-    const DeleteColumnsFunction = (cloumnName) => {
-        let deletedCol = [...deleteColumns, cloumnName]
-        setDeleteColumns(deletedCol)
-    }
-
-    const DeleteRowsFunction = (row) => {
-        let rows = [...deleteRows, row]
-        setDeleteRows(rows)
-    }
-
-    const UndoAllChenges = () => {
-        // setTempCSV(csv)
-        setChangeColumnName([])
-        setDeleteColumns([])
-        setDeleteRows([])
-    }
-
 
     const handleincreas = () => {
         //input
@@ -85,6 +59,11 @@ export default function EditDeataSet() {
         }
     }
 
+    const changeColumnNameFunction = (colname, newnameC) => {
+        let newnames = { ...changeColumnName, [colname]: newnameC }
+        setChangeColumnName(newnames)
+    }
+
     const handleClose = () => {
         setOpen(false);
     };
@@ -108,7 +87,7 @@ export default function EditDeataSet() {
             {stepnum === 1 &&
                 <ViewDatasetWarcking csv={csv} fileName={fileName} />}
             {stepnum === 2 &&
-                <Preprocessing csv={csv} tempCSV={tempCSV} setTempCSV={setTempCSV} changeColumnNameFunction={changeColumnNameFunction} DeleteColumnsFunction={DeleteColumnsFunction} DeleteRowsFunction={DeleteRowsFunction} UndoAllChenges={UndoAllChenges} />}
+                <Preprocessing csv={csv} tempCSV={tempCSV} setTempCSV={setTempCSV} changeColumnNameFunction={changeColumnNameFunction}/>}
             {stepnum === 3 &&
                 <DownloadCSV tempCSV={tempCSV} />}
 
